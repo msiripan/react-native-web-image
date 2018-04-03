@@ -37,9 +37,14 @@ class WebImageViewManager extends SimpleViewManager<ImageView> {
     @ReactProp(name="source")
     public void setSrc(ImageView view, @Nullable ReadableMap source) {
         if (source == null) return;
-        final String uriProp = source.getString("uri");
-        final Uri uri = Uri.parse(uriProp);
-        Glide.with(view.getContext()).load(uri).into(view);
+        try {
+            final String uriProp = source.getString("uri");
+            final Uri uri = Uri.parse(uriProp);
+            Glide.with(view.getContext()).load(uri).into(view);
+        } catch (Exception e) {
+            Log.e("WebImageViewManager", "WebImageViewManager setSrc() error: "+e.getMessage() );
+            return;
+        }
     }
 
     @ReactProp(name="resizeMode")
