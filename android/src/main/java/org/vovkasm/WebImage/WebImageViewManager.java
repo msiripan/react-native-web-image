@@ -2,6 +2,7 @@ package org.vovkasm.WebImage;
 
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
